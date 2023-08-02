@@ -28,25 +28,12 @@ public class ManagerPoster {
     }
 
     public String[] findLast() {
-        int lastCount = countLastPosters;
+        int lastCount = (posters.length < countLastPosters)? posters.length:countLastPosters;
         String[] lastPosters;
-
-        if (posters.length < countLastPosters) {
-            lastPosters = new String[posters.length];
-
-            for (int i = 0; i < lastPosters.length; i++) {
-                lastPosters[i] = posters[posters.length - 1 - i];
-            }
-
-            System.out.println(Arrays.toString(lastPosters));
-            return lastPosters;
-        }
         lastPosters = new String[lastCount];
 
-        int j = 0;
-        for (int i = posters.length - 1; i > posters.length - lastCount - 1; i--) {
-            lastPosters[j] = posters[i];
-            j++;
+        for (int i = 0; i < lastPosters.length; i++) {
+            lastPosters[i] = posters[posters.length - 1 - i];
         }
 
         System.out.println(Arrays.toString(lastPosters));
